@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ayok Berhenti COVID</title>
+
+        <!--importing the css stylesheet-->
+        <link rel="stylesheet" href="../stylesheet.css">
+
+        <!--importing the required fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+        
+    <body>
+        <div class="container">
+            <!-- Navigation bar -->
+                <div class="navbar">
+                <a class="home" href="../index.html">Ayok Berhenti COVID-19</a>
+                <a href="Survey.html">Symptom Checker</a>
+                <a href="VaxCheck.html">Vaccination Checker</a>
+                <a href="information.html">Information</a>
+                <a href="vaxlocations.html">Vaccination Locations</a>
+                </div>
+        </div>
+
+        <div class="vaxContainer">
+            <div id="cover" class="checker">
+                <h1>Symptom Checker</h1>
+                <p>Fill out this short quiz to check your current symptoms.</p>
+                <button id="buttonStart" class="button">Let's Get Started >></button>
+            </div>
+            
+            <div class="questionDiv">
+                <div id="tempCheck" class="hidden">
+                    <h3>What is your current <span class="special">temperature</span>?</h3>
+                    <p><input id="tempInput" type="number" min="35" max="40" step="0.1"><sup>o</sup>C</p>
+                    <button id="buttonTemp" class="button">
+                        Next!
+                    </button>
+                </div>
+            
+                <div id="oxCheck" class="hidden">
+                    <h3>What is your <span class="special">oxygen saturation</span>?</h3>
+                    <p><input id="oxInput" type="number" min="85" max="100">%</p>
+                    <button id="buttonOx" class="button">
+                        Next!
+                    </button>
+                </div>
+            
+                <div id="otherCheck" class="hidden">
+                    <h3>Are you experiencing any other <span class="special">symptoms</span>?<span class="extra"> (click all that apply)</span></h3>
+                    <div class="symptomFlexBox">
+                        <div class="symptomDiv1">
+                            <label><input value="Nausea" type="checkbox" id="Nausea">Nausea</label><br>
+                            <label><input value="Fever" type="checkbox" id="Fever">Fever</label><br>
+                            <label><input value="Runny_Nose" type="checkbox" id="Runny_Nose">Runny Nose</label><br>
+                            <label><input value="Fatigue" type="checkbox" id="Fatigue">Fatigue</label><br>
+                            <label><input value="Loss_of_Smell" type="checkbox" id="Loss_of_Smell">Loss of Smell</label><br>
+                            <label><input value="Loss_of_Taste" type="checkbox" id="Loss_of_Taste">Loss of Taste</label><br>
+                        </div>
+
+                        <div class="symptomDiv2">
+                            <label><input value="Headache" type="checkbox" id="Headache">Headache</label><br>
+                            <label><input value="Sore_Throat" type="checkbox" id="Sore_Throat">Sore Throat</label><br>
+                            <label><input value="Diarrhea" type="checkbox" id="Diarrhea">Diarrhea</label><br>
+                            <label><input value="Cold_Chills" type="checkbox" id="Cold_Chills">Cold Chills</label><br>
+                            <label><input value="Trouble_Breathing" type="checkbox" id="Trouble_Breathing">Trouble Breathing</label><br>
+                            <label><input value="Chest_Pains" type="checkbox" id="Chest_Pains">Chest Pains</label><br>
+                    
+                        </div>
+                    </div>
+                    <button id="buttonOther" class="button">Get My Results!</button>
+                </div>
+            
+                <div id="summary" class="hidden">
+                    <h2 id="finalMessage"></h2>
+                    <h3>Today's Symptoms</h3>
+                    <h6 id="tempSum"></h6>
+                    <h6 id="oxSum"></h6>
+                    <h6 id="symptomMessage"></h6>
+                    <p>
+                        <ul>
+                            <li id="NauseaSum" class="hidden">Nausea</li>
+                            <li id="FeverSum" class="hidden">Fever</li>
+                            <li id="RunnyNoseSum" class="hidden">Runny Nose</li>
+                            <li id="FatigueSum" class="hidden">Fatigue</li>
+                            <li id="LOSSum" class="hidden">Loss of Smell</li>
+                            <li id="LOTSum" class="hidden">Loss of Taste</li>
+                            <li id="HeadacheSum" class="hidden">Headache</li>
+                            <li id="SoreThroatSum" class="hidden">Sore Throat</li>
+                            <li id="DiarrheaSum" class="hidden">Diarrhea</li>
+                            <li id="ColdChillsSum" class="hidden">Cold Chills</li>
+                            <li id="TBSum" class="hidden">Trouble Breathing</li>
+                            <li id="ChestPainsSum" class="hidden">Chest Pains</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .trigger {
+    }
+
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<script>
+    function Start() {
+        cover.classList.add('hidden');
+        tempCheck.classList.remove('hidden');
+    }
+
+    function tempChecker() {
+        if (tempInput.value >= 37.6) {
+            tempCheck.classList.add('trigger');
+        }
+        tempCheck.classList.add('hidden');
+        oxCheck.classList.remove('hidden');
+    }
+
+    function oxChecker() {
+        if (oxInput.value <= 95) {
+            oxCheck.classList.add('trigger');
+        } 
+        oxCheck.classList.add('hidden');
+        otherCheck.classList.remove('hidden')
+    }
+
+    function final() {
+        otherCheck.classList.add('hidden');
+        summary.classList.remove('hidden');
+        message1 = "You are not currently exhibiting the common symptoms of COVID-19!";
+        message2 = "You are demonstrating some symptoms of COVID-19! Please get tested!"
+        finalMessage.textContent = message1;
+        tempSum.textContent = "Your temperature is " + tempInput.value + " Celcius.";
+        oxSum.textContent = "Your oxygen saturation is " + oxInput.value + "%.";
+        symptomMessage.textContent = "No Other Symptoms.";
+
+        if (tempCheck.classList.contains('trigger')) {
+            finalMessage.textContent = message2;
+        } else if (oxCheck.classList.contains('trigger')) {
+            finalMessage.textContent = message2;
+        } else if (Loss_of_Smell.checked) { 
+            finalMessage.textContent = message2;
+        } else if (Loss_of_Taste.checked) {
+            finalMessage.textContent = message2;
+        } else if (Trouble_Breathing.checked) {
+            finalMessage.textContent = message2;
+        } else if (Fever.checked) {
+            finalMessage.textContent = message2;
+        } else if (Chest_Pains.checked) {
+            finalMessage.textContent = message2;
+        }
+
+        if (Nausea.checked) {
+            NauseaSum.classList.remove("hidden");
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Runny_Nose.checked) {
+            RunnyNoseSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Fatigue.checked) {
+            FatigueSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Headache.checked) {
+            HeadacheSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Sore_Throat.checked) {
+            SoreThroatSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Diarrhea.checked) {
+            DiarrheaSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Cold_Chills.checked) {
+            ColdChillsSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Loss_of_Smell.checked) {
+            LOSSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Loss_of_Taste.checked) {
+            LOTSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Trouble_Breathing.checked) {
+            TBSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Fever.checked) {
+            FeverSum.classList.remove("hidden");
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+        if (Chest_Pains.checked) {
+            ChestPainsSum.classList.remove('hidden');
+            symptomMessage.textContent = "Other Symptom(s):";
+        }
+    }
+    
+    buttonStart.onclick = Start;
+    buttonTemp.onclick = tempChecker;
+    buttonOx.onclick = oxChecker;
+    buttonOther.onclick = final;
+</script>

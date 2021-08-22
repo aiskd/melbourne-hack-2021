@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+    <!--importing the required fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../stylesheet.css">
+
+    <div class="navbar">
+        <a class="home" href="../index.html">Ayok Berhenti COVID-19</a>
+        <a href="Survey.html">Symptom Checker</a>
+        <a href="VaxCheck.html">Vaccination Checker</a>
+        <a href="information.html">Information</a>
+        <a href="vaxlocations.html">Vaccination Locations</a>
+      </div>
+
+    <div class="vaxContainer">
+        <h1 class="vaxHeader">Are you eligible for a vaccine?</h1>
+        <h2 id="finalMessage" class="hidden"></h2>
+
+        <!--Will not be shown, just for info tracking-->
+        <p id="personalInfo" class="hidden"></p>
+
+        <div class="questionContainer">
+            <div id="intro">
+                <p>Fill this survey to find out!</p>
+                <button class="button" id="buttonStart">
+                    Start!
+                </button>
+            </div>
+
+            <div id="firstVaxCheck" class="hidden">
+                <h3>Is this your first COVID-19 vaccine shot?</h3>
+                <label><input  type="radio" name="firstVax" value="yes" id="firstVax_yes">Yes</label>
+                <label><input  type="radio" name="firstVax" value="no" id="firstVax_no">No</label>
+                <p>
+                    <button class="button" id="buttonfirstVax">
+                        Next!
+                    </button>
+                </p>
+            </div>
+
+            <div id="ageCheck" class="hidden">
+                <h3>What is your current age?</h3>
+                <p><input id="ageInput" type="number" min="18"></p><br>
+                <button class="button" id="buttonAge">
+                    Next!
+                </button>
+            </div>
+
+            <div id="tempCheck" class="hidden">
+                <h3>What is your current temperature?</h3>
+                <p><input id="tempInput" type="number" min="35" max="40" step="0.1"><sup>o</sup>C</p><br>
+                <button class="button" id="buttonTemp">
+                    Next!
+                </button>
+            </div>      
+
+            <div id="bloodPresCheck" class="hidden">
+                <h3 class="bloodPressQues">What is your current blood pressure?</h3>
+                <div class="flexBoxPress">
+                    <div class="sysDiv">
+                        <h5>Systolic Blood Pressure (Top Number)</h5>
+                        <input id="SysInput" type="number" min="80" max="200">
+                    </div>
+
+                    <div class="diaDiv">
+                        <h5>Diastolic Blood Pressure (Bottom Number)</h5>
+                        <input id="DiaInput" type="number" min="50" max="130"><br>
+                    </div>
+                </div>
+                    <button class="button" id="buttonbloodPres">
+                    Next! 
+                </button>
+            </div>
+
+            <div id="prevContactCheck" class="hidden">
+                <h3>Have you been in contact with anyone who is testing/confirmed/undergoing treatment for <br> COVID-19 in the last 14 days?</h3>
+                <label><input  type="radio" name="prevContact" value="yes" id="prevCon_yes">Yes</label>
+                <label><input  type="radio" name="prevContact" value="no" id="prevCon_no">No</label><br>
+                <button class="button" id="buttonprevContact">
+                    Next!
+                </button>
+            </div>
+
+            <div id="symptomCheck" class="hidden">
+                <h3>Are you experiencing any fever/runny nose/cough/trouble breathing?</h3>
+                <label><input  type="radio" name="symptom" value="yes" id="symptom_yes">Yes</label>
+                <label><input  type="radio" name="symptom" value="no" id="symptom_no">No</label><br>
+                <button class="button" id="buttonSymptom">
+                    Next!
+                </button>
+            </div>
+
+            <div id="prevPosCheck" class="hidden">
+                <h3>Have you previously tested positive for COVID-19?</h3>
+                <label><input  type="radio" name="prevPos" value="yes" id="prevPos_yes">Yes</label>
+                <label><input  type="radio" name="prevPos" value="no" id="prevPos_no">No</label><br>
+                <button class="button" id="buttonprevPos">
+                    Next!
+                </button>
+            </div>
+
+            <div id="pregCheck" class="hidden">
+                <h3>Are you currently pregnant or breastfeeding?</h3>
+                <label><input value="Pregnant" type="checkbox" id="Pregnant">Pregnant</label><br>
+                <label><input value="Breastfeeding" type="checkbox" id="Breastfeeding">Breastfeeding</label><br>
+                <label><input value="None" type="checkbox" id="None">None</label><br>
+                <button class="button" id="buttonPreg">
+                    Next!
+                </button>
+            </div>
+
+            <div id="firstShot" class="hidden">
+                <h3>Do you have severe allergic reactions such as shortness of breath, swelling and hives all over your <br> body or other reactions due to vaccines?</h3>
+                <label><input  type="radio" name="symptomVax" value="yes" id="firstsymp_yes">Yes</label>
+                <label><input  type="radio" name="symptomVax" value="no" id="firstsymp_no">No</label><br>
+                <button class="button" id="buttonfirstShot">
+                    Next!
+                </button>
+            </div>
+
+            <div id="secondShot" class="hidden">
+                <h3>Do you have severe allergic reactions such as shortness of breath, swelling and hives all over your <br> body or other reactions after your first COVID-19 vaccine?</h3>
+                <label><input  type="radio" name="symptomVax2" value="yes" id="secsymp_yes">Yes</label>
+                <label><input  type="radio" name="symptomVax2" value="no" id="secsymp_no">No</label><br>
+                <button class="button" id="buttonsecondShot">
+                    Next!
+                </button>
+            </div>
+
+            <div id="medConCheck" class="hidden">
+                <h3>Are you currently diagnosed with any heart/kidney/liver diseases?</h3>
+                <label><input  type="radio" name="medCon" value="yes" id="medcon_yes">Yes</label>
+                <label><input  type="radio" name="medCon" value="no" id="medcon_no">No</label><br>
+                <button class="button" id="buttonmedCon">
+                    Next!
+                </button>
+            </div>
+
+            <div id="cancerCheck" class="hidden">
+                <h3>Are you currently diagnosed and receiving treatment for cancer?</h3>
+                <label><input  type="radio" name="cancer" value="yes" id="cancer_yes">Yes</label>
+                <label><input  type="radio" name="cancer" value="no" id="cancer_no">No</label><br>
+                <button class="button" id="buttoncancer">
+                    Next!
+                </button>
+            </div>
+
+            <div id="bloodCheck" class="hidden">
+                <h3>Are you currently receiving treatment for blood clotting, immune deficiency or received a <br>blood transfusion?</h3>
+                <label><input  type="radio" name="blood" value="yes" id="blood_yes">Yes</label>
+                <label><input  type="radio" name="blood" value="no" id="blood_no">No</label><br>
+                <button class="button" id="buttonblood">
+                    Next!
+                </button>
+            </div>
+
+            <div id="epilepsyCheck" class="hidden">
+                <h3>Do you have a history of epilepsy?</h3>
+                <label><input  type="radio" name="epilepsy" value="yes" id="epilepsy_yes">Yes</label>
+                <label><input  type="radio" name="epilepsy" value="no" id="epilepsy_no">No</label><br>
+                <button class="button" id="buttonepilepsy">
+                    Next!
+                </button>
+            </div>
+
+            <div id="diabetesCheck" class="hidden">
+                <h3>Are you currently diagnosed with Diabetes Mellitus (Type 2 Diabetes)?</h3>
+                <label><input  type="radio" name="diabetes" value="yes" id="diab_yes">Yes</label>
+                <label><input  type="radio" name="diabetes" value="no" id="diab_no">No</label><br>
+                <button class="button" id="buttondiabetes">
+                    Next!
+                </button>
+            </div>
+
+            <div id="HIVCheck" class="hidden">
+                <h3>Are you currently diagnosed with HIV?</h3>
+                <label><input  type="radio" name="hiv" value="yes" id="HIV_yes">Yes</label>
+                <label><input  type="radio" name="hiv" value="no" id="HIV_yes">No</label><br>
+                <button class="button" id="buttonHiv">
+                    Next!
+                </button>
+            </div>
+
+            <div id="RespCheck" class="hidden">
+                <h3>Are you currently diagnosed with respiratory diseases?</h3>
+                <h6>(includes Asthma, Chronic Obstructive Pulmonary Disease)</h6>
+                <label><input  type="radio" name="respdis" value="yes" id="Resp_yes">Yes</label>
+                <label><input  type="radio" name="respdis" value="no" id="Resp_no">No</label><br>
+                <button class="button" id="buttonrespdis">
+                    Next!
+                </button>
+            </div>
+
+            <div id="otherVax" class="hidden">
+                <h3>Have you received any other vaccine in the past month?</h3>
+                <label><input  type="radio" name="otherVax" value="yes" id="otherVax_yes">Yes</label>
+                <label><input  type="radio" name="otherVax" value="no" id="otherVax_no">No</label><br>
+                <button class="button" id="buttonotherVax">
+                    Next!
+                </button>
+            </div>
+
+            <div id="elderStairs" class="hidden">
+                <h3>Are you having any difficulties climbing up 10 steps?</h3>
+                <label><input  type="radio" name="elderstairs" value="yes" id="elderstairs_yes">Yes</label>
+                <label><input  type="radio" name="elderstairs" value="no" id="elderstairs_no">No</label><br>
+                <button class="button" id="buttonelderstairs">
+                    Next!
+                </button>
+            </div>
+
+            <div id="elderFatigue" class="hidden">
+                <h3>Do you often experience fatigue?</h3>
+                <label><input  type="radio" name="elderfatigue" value="yes" id="elderfatigue_yes">Yes</label>
+                <label><input  type="radio" name="elderfatigue" value="no" id="elderfatigue_no">No</label><br>
+                <button class="button" id="buttonelderfatigue">
+                    Next!
+                </button>
+            </div>
+
+            <div id="elderother" class="hidden">
+                <h3>Which of the following diseases are you diagnosed with?</h3>
+                <label><input value="Hypertension" type="checkbox" id="Hypertension">Hypertension</label><br>
+                <label><input value="Diabetes" type="checkbox" id="Diabetes">Diabetes</label><br>
+                <label><input value="Cancer" type="checkbox" id="Cancer">Cancer</label><br>
+                <label><input value="Chronic-Respiratory-Disease" type="checkbox" id="Chronic_Respiratory_Disease">Chronic Respiratory Disease</label><br>
+                <label><input value="Congestive-Heart-Failure" type="checkbox" id="Congestive_Heart_Failure">Congestive Heart Failure</label><br>
+                <label><input value="Chest-Pain" type="checkbox" id="Chest_Pain">Chest Pain</label><br>
+                <label><input value="Joint-Pain" type="checkbox" id="Joint_Pain">Joint Pain</label><br>
+                <label><input value="Stroke" type="checkbox" id="Stroke">Stroke</label><br>
+                <label><input value="Kidney-Disease" type="checkbox" id="Kidney_Disease">Kidney Disease</label><br>
+                <label><input value="Heart-Attack" type="checkbox" id="Heart_Attack">Heart Attack</label><br>
+                <label><input value="Asthma" type="checkbox" id="Asthma">Asthma</label><br>
+                <button class="button" id="buttonelderother">
+                    Next!
+                </button>
+            </div>
+
+            <div id="elderWalk" class="hidden">
+                <h3>Are you having any difficulties walking 100-200m (328-656 feet)?</h3>
+                <label><input  type="radio" name="elderwalk" value="yes" id="elderwalk_yes">Yes</label>
+                <label><input  type="radio" name="elderwalk" value="no" id="elderwalk_no">No</label><br>
+                <button class="button" id="buttonelderwalk">
+                    Next!
+                </button>
+            </div>
+
+            <div id="elderWeight" class="hidden">
+                <h3>Have you experienced any significant weight loss in the past year?</h3>
+                <label><input  type="radio" name="elderweight" value="yes" id="elderweight_yes">Yes</label>
+                <label><input  type="radio" name="elderweight" value="no" id="elderweight_no">No</label><br>
+                <button class="button" id="buttonelderweight">
+                    Next!
+                </button>
+            </div>
+        </div>
+    </div>
+</html>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    /*These will never be shown so you dont have to fill this. It's just for tracking.*/
+    .first {
+    }
+    
+    .second {
+    }
+
+    .elder {
+    }
+
+    .controlledAmount {
+    }
+</style>
+
+<script>
+    var elder_count = 0
+    var elder_other = 0
+
+    function Startfx() {
+        intro.classList.add('hidden');
+        firstVaxCheck.classList.remove('hidden');
+    }
+
+    function firstVaxfx() {
+        if (firstVax_yes.checked) {
+            personalInfo.classList.add('first');
+        } else if (firstVax_no.checked) {
+            personalInfo.classList.add('second');
+        }
+        firstVaxCheck.classList.add('hidden');
+        ageCheck.classList.remove('hidden');
+    }
+
+    function Agefx() {
+        if (ageInput.value >= 60) {
+            personalInfo.classList.add('elder')
+        }
+        ageCheck.classList.add('hidden');
+        tempCheck.classList.remove('hidden');
+    }
+
+    function Tempfx() {
+        if (tempInput.value > 37.5) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until your temperature drops.";
+            finalMessage.classList.remove("hidden");
+            tempCheck.classList.add('hidden');
+        } else {
+            tempCheck.classList.add('hidden')
+            bloodPresCheck.classList.remove('hidden');
+        }
+    }
+
+    function bloodPresfx() {
+        if (SysInput.value > 180) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until your blood pressure drops.";
+            finalMessage.classList.remove('hidden');
+            bloodPresCheck.classList.add('hidden');
+        } else if (DiaInput.value > 110) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until your blood pressure drops.";
+            finalMessage.classList.remove('hidden');
+            bloodPresCheck.classList.add('hidden');
+        } else if (SysInput.value < 90) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until your blood pressure reaches the ideal range.";
+            finalMessage.classList.remove('hidden');
+            bloodPresCheck.classList.add('hidden');
+        } else if (DiaInput.value < 60) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until your blood pressure reaches the ideal range.";
+            finalMessage.classList.remove('hidden');
+            bloodPresCheck.classList.add('hidden');
+        } else {
+            bloodPresCheck.classList.add('hidden');
+            prevContactCheck.classList.remove('hidden');
+        }
+    }
+
+    function prevContactfx() {
+        if (prevCon_yes.checked) {
+            prevContactCheck.classList.add('hidden');
+            symptomCheck.classList.remove('hidden');
+        } else if (prevCon_no) {
+            prevContactCheck.classList.add('hidden');
+            prevPosCheck.classList.remove('hidden');
+        }
+    }
+
+    function Symptomfx() {
+        if (symptom_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until 14 days after the symptoms first arose.";
+            finalMessage.classList.remove('hidden');
+            symptomCheck.classList.add('hidden');
+        } else if (symptom_no.checked) {
+            symptomCheck.classList.add('hidden');
+            prevPosCheck.classList.remove('hidden');
+        }
+    }
+
+    function prevPosfx() {
+        if (prevPos_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed 3 months after your previous COVID-19 positive result.";
+            finalMessage.classList.remove('hidden');
+            prevPosCheck.classList.add('hidden');
+        } else if (prevPos_no.checked) {
+            prevPosCheck.classList.add('hidden');
+            pregCheck.classList.remove('hidden');
+        }
+    }
+
+    function Pregfx() {
+        if (Pregnant.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until after the end of your pregnancy.";
+            finalMessage.classList.remove('hidden');
+            pregCheck.classList.add('hidden');
+        } else {
+            if (personalInfo.classList.contains('first')) {
+                pregCheck.classList.add('hidden');
+                firstShot.classList.remove('hidden');
+            } else if (personalInfo.classList.contains('second')){
+                pregCheck.classList.add('hidden');
+                secondShot.classList.remove('hidden');
+            }
+        }
+    }
+
+    function firstShotfx() {
+        if (firstsymp_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be conducted in the hospital.";
+            finalMessage.classList.remove('hidden');
+            firstShot.classList.add('hidden');
+        } else if (firstsymp_no.checked) {
+            firstShot.classList.add('hidden');
+            medConCheck.classList.remove('hidden');
+        }
+    }
+
+    function secondShotfx() {
+        if (secsymp_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be conducted in the hospital or you may not receive the second shot.";
+            finalMessage.classList.remove('hidden');
+            secondShot.classList.add('hidden');
+        } else if (secsymp_no.checked) {
+            secondShot.classList.add('hidden');
+            medConCheck.classList.remove('hidden');
+        }
+    }
+
+    function medConfx() {
+        if (medcon_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will NOT be conducted.";
+            finalMessage.classList.remove('hidden');
+            medConCheck.classList.add('hidden');
+        } else if (medcon_no.checked) {
+            medConCheck.classList.add('hidden');
+            cancerCheck.classList.remove('hidden');
+        }
+    }
+
+    function Cancerfx() {
+        if (cancer_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will NOT be conducted";
+            finalMessage.classList.remove('hidden');
+            cancerCheck.classList.add('hidden');
+        } else if (cancer_no.checked) {
+            cancerCheck.classList.add('hidden');
+            bloodCheck.classList.remove('hidden');
+        }
+    }
+
+    function Bloodfx() {
+        if (blood_yes.checked) {
+            finalMessage.textContent = "We regret to inform you that you may need to refer to an expert before getting vaccinated.";
+            finalMessage.classList.remove('hidden');
+            bloodCheck.classList.add('hidden');
+        } else if (blood_no.checked) {
+            bloodCheck.classList.add('hidden');
+            epilepsyCheck.classList.remove('hidden');
+        }
+    }
+
+    function Epilepsyfx() {
+        if (epilepsy_yes.checked) {
+            personalInfo.classList.add('controlledAmount');
+        } 
+        epilepsyCheck.classList.add('hidden');
+        diabetesCheck.classList.remove('hidden');
+    }
+
+    function Diabetesfx() {
+        if (diab_yes.checked) {
+            personalInfo.classList.add('controlledAmount');
+        } 
+        diabetesCheck.classList.add('hidden');
+        HIVCheck.classList.remove('hidden');
+    }
+
+    function HIVfx() {
+        if (HIV_yes.checked) {
+            personalInfo.classList.add('controlledAmount');
+        } 
+        HIVCheck.classList.add('hidden');
+        RespCheck.classList.remove('hidden');
+    }
+
+    function RespDisfx() {
+        if (Resp_yes.checked) {
+            personalInfo.classList.add('controlledAmount');
+        } 
+        RespCheck.classList.add('hidden');
+        otherVax.classList.remove('hidden');
+    }
+
+    function otherVaxfx() {
+        if (otherVax_yes.checked) {
+            finalMessage.textContent = "I'm sorry, your vaccination will be delayed until 1 month after your previous vaccination.";
+            finalMessage.classList.remove('hidden');
+            otherVax.classList.add('hidden');
+        } else if (otherVax_no.checked) {
+            otherVax.classList.add('hidden');
+            if (personalInfo.classList.contains('elder')) {
+                elderStairs.classList.remove('hidden');
+            } else {
+                if (personalInfo.classList.contains('controlledAmount')){
+                    finalMessage.textContent = "Congratulations! You'll be able to receive the vaccination. Due to your medical condition(s), this will be conducted under a controlled environment.";
+                    finalMessage.classList.remove('hidden');
+                } else {
+                    finalMessage.textContent = "Congratulations! You'll be able to receive the vaccination.";
+                    finalMessage.classList.remove('hidden');
+                }
+            }
+        }
+    }
+
+    function elderStairsfx() {
+        if (elderstairs_yes.checked) {
+            elder_count += 1
+        }
+        elderStairs.classList.add('hidden');
+        elderFatigue.classList.remove('hidden');
+    }
+
+    function elderFatiguefx() {
+        if (elderfatigue_yes.checked) {
+            elder_count += 1
+        }
+        elderFatigue.classList.add('hidden');
+        elderother.classList.remove('hidden');
+    }
+
+    function elderOtherfx() {
+        if (Hypertension.checked) {
+            elder_other += 1
+        }
+        if (Diabetes.checked) {
+            elder_other += 1
+        }
+        if (Cancer.checked) {
+            elder_other += 1
+        }
+        if (Chronic_Respiratory_Disease.checked) {
+            elder_other += 1
+        }
+        if (Congestive_Heart_Failure.checked) {
+            elder_other += 1
+        }
+        if (Chest_Pain.checked) {
+            elder_other += 1
+        }
+        if (Joint_Pain.checked) {
+            elder_other += 1
+        }
+        if (Stroke.checked) {
+            elder_other += 1
+        }
+        if (Kidney_Disease.checked) {
+            elder_other += 1
+        }
+        if (Heart_Attack.checked) {
+            elder_other += 1
+        }
+        if (Asthma.checked) {
+            elder_other += 1
+        }
+
+        if (elder_other >= 5) {
+            elder_count += 1
+        }
+        elderother.classList.add('hidden');
+        elderWalk.classList.remove('hidden');
+    }
+    
+    function elderWalkfx() {
+        if (elderwalk_yes.checked) {
+            elder_count += 1
+        }
+        elderWalk.classList.add('hidden');
+        elderWeight.classList.remove('hidden');
+    }
+    
+    function elderWeightfx() {
+        if (elderweight_yes.checked) {
+            elder_count += 1
+        }
+        elderWeight.classList.add('hidden');
+
+        if (elder_count >= 3) {
+            finalMessage.textContent = "I'm sorry, your vaccination will NOT be conducted.";
+            finalMessage.classList.remove('hidden');
+            elderWeight.classList.add('hidden');
+        } else if (personalInfo.classList.contains('controlledAmount')) {
+                finalMessage.textContent = "Congratulations! You'll be able to receive the vaccination. Due to your medical condition(s), this will be conducted under a controlled environment";
+                finalMessage.classList.remove('hidden');
+                elderWeight.classList.add('hidden');
+        } else {
+            finalMessage.textContent = "Congratulations! You'll be able to receive the vaccination.";
+            finalMessage.classList.remove('hidden');
+            elderWeight.classList.add('hidden');
+        }
+    }
+
+    buttonStart.onclick = Startfx;
+    buttonfirstVax.onclick = firstVaxfx;
+    buttonAge.onclick = Agefx;
+    buttonTemp.onclick = Tempfx;
+    buttonbloodPres.onclick = bloodPresfx;
+    buttonprevContact.onclick = prevContactfx;
+    buttonSymptom.onclick = Symptomfx;
+    buttonprevPos.onclick = prevPosfx;
+    buttonPreg.onclick = Pregfx;
+    buttonfirstShot.onclick = firstShotfx;
+    buttonsecondShot.onclick = secondShotfx;
+    buttonmedCon.onclick = medConfx;
+    buttoncancer.onclick = Cancerfx;
+    buttonblood.onclick = Bloodfx;
+    buttonepilepsy.onclick = Epilepsyfx;
+    buttondiabetes.onclick = Diabetesfx;
+    buttonHiv.onclick = HIVfx;
+    buttonrespdis.onclick = RespDisfx;
+    buttonotherVax.onclick = otherVaxfx;
+    buttonelderstairs.onclick = elderStairsfx;
+    buttonelderfatigue.onclick = elderFatiguefx;
+    buttonelderother.onclick = elderOtherfx;
+    buttonelderwalk.onclick = elderWalkfx;
+    buttonelderweight.onclick = elderWeightfx; 
+</script>

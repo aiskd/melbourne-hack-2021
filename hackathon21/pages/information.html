@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ayok Berhenti COVID</title>
+
+    <!--importing the css stylesheet-->
+    <link rel="stylesheet" href="../stylesheet.css">
+
+    <!--importing the required fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container">
+        <!-- Navigation bar -->
+          <div class="navbar">
+            <a class="home" href="../index.html">Ayok Berhenti COVID</a>
+            <a href="Survey.html">Symptom Checker</a>
+            <a href="VaxCheck.html">Vaccination Checker</a>
+            <a href="information.html">Information</a>
+            <a href="vaxlocations.html">Vaccination Locations</a>
+          </div>
+    </div>
+
+    <!-- flex box with all the info cards -->
+    <div class="flex-container">
+      <div>
+        <h4>About COVID-19</h4>
+        <button id="button" class="infoButton">Learn More!</button>
+      </div>
+      <div>
+        <h4>Prevention Tips for the Pandemic</h4>
+        <button id="button" class="infoButton">Learn More!</button>
+      </div>
+    </div>
+
+    <!-- all the modal boxes -->
+    <div id="modalCOVID19" class="modal">
+      <div class="modal-content">
+        <span id="close" class="close">&times;</span>
+        <h3>What is COVID-19?</h3>
+        <p>COVID-19 is an infectious disease caused by a coronavirus called SARS-CoV-2. It was first discovered in Wuhan in December 2019.</p>
+        
+        <h4>Symptoms:</h4>
+        <ul>
+          <li>Fever or chills</li>
+          <li>Cough</li>
+          <li>Shortness of breath or difficulty breathing</li>
+          <li>Fatigue</li>
+          <li>Muscle or body aches</li>
+          <li>Headache</li>
+          <li>Loss of taste or smell</li>
+          <li>Sore throat</li>
+          <li>Congestion or runny nose</li>
+          <li>Nausea or vomiting</li>
+          <li>Diarrhea</li>
+        </ul>
+        
+        <h4>Severe Symptoms:</h4>
+        <ul>
+          <li>Shortness of breath</li>
+          <li>Loss of appetite</li>
+          <li>Confusion</li>
+          <li>Persistent pain or pressure in the chest</li>
+          <li>High temperature (above 38 °C)</li>
+          <li>Inability to wake or stay awake</li>
+        </ul>
+
+        <h4>Treatment:</h4>
+        <ul>
+          <li>Contact a  health-care worker or a COVID-19 hotline to find out where and when to get a test.</li>
+          <li>If testing is not available, stay home and away from others for 14 days.</li>
+          <li>Wear a medical mask to protect others, including if/when you need to seek medical care.</li>
+          <li>Stay in a separate room from other family members, and if not possible, wear a medical mask and maintain a 1 meter distance from them.</li>
+          <li>Keep the room well-ventilated.</li>
+          <li>Monitor yourself for any symptoms for 14 days.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modalPrevent" class="modal">
+      <div class="modal-content">
+        <span id="close" class="close">&times;</span>
+        <h3>Prevention Tips</h3>
+        <ul>
+          <li>Maintain a safe distance from others, even if they don’t appear to be sick.</li>
+          <li>Wear a mask in public, especially indoors or when physical distancing is not possible.</li>
+          <li>Shortness of breath or difficulty breathing</li>
+          <li>Choose open, well-ventilated spaces over closed ones.</li>
+          <li>Clean your hands often. Use soap and water, or an alcohol-based hand rub.</li>
+          <li>If given the opportunity, vaccinate immediately.</li>
+          <li>Cover your nose and mouth with your bent elbow or a tissue when you cough or sneeze.</li>
+          <li>Stay home if you feel unwell.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- javascript to open and close the modal boxes -->
+    <script>
+        // multiple modal box tutorial 
+        // credits to: https://stackoverflow.com/questions/40645032/creating-multiple-modals-on-a-single-page 
+        
+        // Get the modal
+        var modal = document.getElementsByClassName('modal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementsByClassName("infoButton");
+
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close");
+
+        // When the user clicks the button, open the modal 
+        btn[0].onclick = function() {
+            modal[0].style.display = "block";
+        }
+
+        btn[1].onclick = function() {
+            modal[1].style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span[0].onclick = function() {
+            modal[0].style.display = "none";
+        }
+
+        span[1].onclick = function() {
+            modal[1].style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal[0]) {
+                modal[0].style.display = "none";
+            }
+            if (event.target == modal[1]) {
+                modal[1].style.display = "none";
+            }
+        }
+      </script>
+  </body>
+</html>
+
+
+  

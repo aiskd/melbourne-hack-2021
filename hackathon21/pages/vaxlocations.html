@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Ayok Berhenti COVID</title>
+
+    <!--importing the css stylesheet-->
+    <link rel="stylesheet" href="../stylesheet.css">
+
+    <!--importing the required fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+      $("#input").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="navbar">
+        <a class="home" href="../index.html">Ayok Berhenti COVID-19</a>
+        <a href="Survey.html">Symptom Checker</a>
+        <a href="VaxCheck.html">Vaccination Checker</a>
+        <a href="information.html">Information</a>
+        <a href="vaxlocations.html">Vaccination Locations</a>
+      </div>
+
+      <div class="divSearch">
+        <h3>Searching for a specific vaccine?</h3>
+        <input class="searchBar" id="input" type="text" placeholder="Search for a vaccine...">
+      </div>
+
+      <div class="vaxlist">
+      <table>
+        <thead>
+        <tr>
+          <th>Location</th>
+          <th>Vaccine</th>
+          <th>Ages</th>
+          <th>Schedule</th>
+          <th>Registration</th>
+          <th>Requirements</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        <tr>
+          <td>RSUD Tarakan</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>Monday-Saturday 07.30-12.00 WIB</td>
+          <td><a href="https://docs.google.com/forms/d/e/1FAIpQLScW57Sx111pfsxFHapBY9E_mq_jjDsdcB66sDDUDX_hM0UlsQ/closedform">Online</a></td>
+          <td>
+            <li>KTP for DKI Jakarta citizens </li>
+            <li>Copy of your KTP</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Kecamatan Menteng</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>Monday-Friday 07.30-14.00 WIB</td>
+          <td><a href="tel:+628111797282">Phonecall</a></td>
+          <td>
+            <li>KTP for DKI Jakarta citizens </li>
+            <li>Copy of your KTP</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Hotel Borobudur</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Monday-Friday 10.00-14.00 WIB and Saturday 10.00-13.00 WIB</td>
+          <td><a href="https://agparthakes.id/vaksin-umum">Online</a></td>
+          <td>
+            <li>KTP for DKI Jakarta citizens </li>
+            <li>Copy of your KTP</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RS Tebet</td>
+          <td>Moderna</td>
+          <td>12+</td>
+          <td>Monday-Friday 09.00-11.00 WIB</td>
+          <td><a href="http://bit.ly/vaksin-rstebet">Online</a></td>
+          <td>
+            <li>For those who are below the age of 18: a COPY of family registry is required </li>
+            <li>For those who are 18 and above: KTP </li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RSUD Pasar Minggu</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>Monday-Thurdsday 07.30-12.00 WIB and Friday-Saturday 7.30-10.00 WIB</td>
+          <td><a href="https://vaksinasi.rsudpm.com/">Online</a></td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+            <li>For more information, contact <a href="tel=02129059999">(021) 2905-9999</a></li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RSUD Mampang Prapatan</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>Monday-Saturday 08.00-12.00 WIB.</td>
+          <td><a href="http://bit.ly/vaksinrsudmp">Online</a></td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>Transmart Lebak Bulus</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Wednesday-Sunday 08:00 - 12:00 WIB and 13:00 - 15:00 WIB</td>
+          <td><a href="https://health.detik.com/vaksincovid">Online</a></td>
+          <td>
+            <li>Own a detikID account</li>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>Menara Bank Mega</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Wednesday-Sunday 08:00 - 12:00 WIB and 13:00 - 15:00 WIB</td>
+          <td><a href="https://health.detik.com/vaksincovid">Online</a></td>
+          <td>
+            <li>Own a detikID account</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Transmart Cilandak</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Wednesday-Sunday 08:00 - 12:00 WIB and 13:00 - 15:00 WIB</td>
+          <td><a href="https://health.detik.com/vaksincovid">Online</a></td>
+          <td>
+            <li>Own a detikID account</li>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>Transmart Cempaka Putih</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Wednesday-Sunday 08:00 - 12:00 WIB and 13:00 - 15:00 WIB</td>
+          <td><a href="https://health.detik.com/vaksincovid">Online</a></td>
+          <td>
+            <li>Own a detikID account</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>SCBD - Lot 8</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Monday-Friday 10.00 - 14.00 WIB and Saturday 10.00 -13.00 WIB</td>
+          <td><a href="https://agparthakes.id/vaksin-umum">Online</a></td>
+          <td>
+            <li>For those who are below the age of 18: a COPY of family registry is required </li>
+            <li>For those who are 18 and above: KTP </li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RSUP Fatmawati</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RSUP Pesanggrahan</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RS Mayapada Lebak Bulus</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RS Pondok Indah</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RS Medistra</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RS MMC</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>RSIA Brawijaya</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Puskesmas Kecamatan Setiabudi</td>
+          <td>Moderna</td>
+          <td>18+</td>
+          <td>17 August 2021 - 3 October 2021</td>
+          <td>On-site</td>
+          <td>
+            <li>KTP for DKI Jakarta Citizens</li>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Green Pramuka Square</td>
+          <td>Sinovac, AstraZeneca</td>
+          <td>12+</td>
+          <td>Monday-Friday 08.00-12.00 WIB</td>
+          <td>On-site</td>
+          <td>
+            <li>For those who are below the age of 18: a COPY of family registry is required </li>
+            <li>For those who are 18 and above: KTP </li>
+          </td>
+        </tr>
+
+
+        </tbody>
+      </table>
+      </div>
+    </div>
+        
+    
+  </body>
+</html>
